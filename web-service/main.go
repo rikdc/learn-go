@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
 )
@@ -13,7 +14,10 @@ func main() {
 			name = names[0]
 		}
 
-		rw.Write([]byte("Hello " + name)) // XSS!!
+		m := map[string]string{"name": name}
+		enc := json.NewEncoder(rw)
+		enc.Encode(m)
+
 	})
 
 	err := http.ListenAndServe(":3000", nil)
