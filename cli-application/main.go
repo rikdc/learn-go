@@ -2,6 +2,7 @@ package main // All go applications start with a package.
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -9,7 +10,13 @@ import (
 )
 
 func main() { // keyboard shortcut = fm<tab>
-	f, err := os.Open("myapp.log") // Saving added import automatically. Huzzah!
+	path := flag.String("path", "myapp.log", "The path to the log file.")
+	level := flag.String("level", "ERROR", "The error level to search for.")
+
+	flag.Parse()
+
+	// vv Notice the asterix!
+	f, err := os.Open(*path) // Saving added import automatically. Huzzah!
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,7 +32,7 @@ func main() { // keyboard shortcut = fm<tab>
 		if err != nil {
 			break
 		}
-		if strings.Contains(s, "ERROR") {
+		if strings.Contains(s, *level) {
 			fmt.Println(s)
 		}
 	}
