@@ -15,4 +15,10 @@ func main() {
 	arr2 := [3]int{1, 2, 3}
 	fmt.Println(arr2)
 
+	// Slice concept
+	slice := []int{1, 2, 3}
+
+	slice = append(slice, 4)
+	fmt.Println(slice)
+
 }
