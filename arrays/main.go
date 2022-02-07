@@ -11,4 +11,8 @@ func main() {
 	arr[2] = 3
 	fmt.Println(arr)
 
+	// Short syntax using implicit declaration
+	arr2 := [3]int{1, 2, 3}
+	fmt.Println(arr2)
+
 }
