@@ -22,4 +22,10 @@ func main() {
 
 	fmt.Println(*firstName) // Remember to dereference!
 
+	// AddressOf example:
+	lastName := "Smith"
+	fmt.Println(lastName)
+
+	ptr := &lastName
+	fmt.Println(ptr, *ptr)
 }
