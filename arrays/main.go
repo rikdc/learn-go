@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	arrays()
 	maps()
-
+	struts()
 }
 
 func arrays() {
@@ -42,4 +42,22 @@ func maps() {
 	delete(m, "bar")
 
 	fmt.Println(m)
+}
+
+func struts() {
+	type user struct {
+		ID        int
+		FirstName string
+		LastName  string
+	}
+
+	var u user
+	u.ID = 1
+	u.FirstName = "Bob"
+	u.LastName = "Ross"
+	fmt.Println(u)
+
+	u2 := user{ID: 1, FirstName: "Bob", LastName: "Ross"}
+	fmt.Println(u2)
+
 }
