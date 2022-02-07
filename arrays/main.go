@@ -3,6 +3,12 @@ package main
 import "fmt"
 
 func main() {
+	arrays()
+	maps()
+
+}
+
+func arrays() {
 
 	// Basic array usage
 	var arr [3]int
@@ -17,8 +23,19 @@ func main() {
 
 	// Slice concept
 	slice := []int{1, 2, 3}
-
 	slice = append(slice, 4)
+
 	fmt.Println(slice)
 
+	s2 := slice[1:]
+	s3 := slice[:2]
+	s4 := slice[1:2]
+
+	fmt.Println(s2, s3, s4)
+}
+
+func maps() {
+	m := map[string]int{"foo": 42, "bar": 47}
+
+	fmt.Println(m)
 }
