@@ -38,4 +38,8 @@ func maps() {
 	m := map[string]int{"foo": 42, "bar": 47}
 
 	fmt.Println(m)
+
+	delete(m, "bar")
+
+	fmt.Println(m)
 }
