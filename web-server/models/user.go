@@ -25,7 +25,7 @@ func AddUser(u User) (User, error) {
 	if u.ID == 0 {
 		// We have to return a NullObject of User since
 		// this function expects a return value.
-		return User{}, errors.New("New user must include an id")
+		return User{}, errors.New("new user must include an id")
 	}
 
 	u.ID = nextId
