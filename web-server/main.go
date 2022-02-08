@@ -1,27 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"net/http"
 
-	"github.com/pluralsight/webservice/models"
+	"github.com/pluralsight/webservice/controllers"
 )
 
 func main() {
-	u := models.User{
-		ID:        2,
-		FirstName: "Peter",
-		LastName:  "Pan",
-	}
-	fmt.Println(u)
-
-	port := 3000
-	_, err := startWebServer(port)
-	fmt.Println(err)
-}
-
-func startWebServer(port int) (int, error) {
-	fmt.Println("Starting webserver...")
-	fmt.Println("Server started on port", port)
-
-	return port, nil
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 }
