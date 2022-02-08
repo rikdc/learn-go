@@ -44,3 +44,24 @@ func GetUserByID(id int) (User, error) {
 	}
 	return User{}, fmt.Errorf("User '%v' not found", id)
 }
+
+func UpdateUser(u User) (User, error) {
+	for i, candidate := range users {
+		if candidate.ID == u.ID {
+			users[i] = &u
+			return u, nil
+		}
+	}
+	return User{}, fmt.Errorf("User '%v' not found", u.ID)
+}
+
+func RemoveUserById(id int) error {
+	for i, candidate := range users {
+		if candidate.ID == id {
+			// This is the syntax, apparently and it looks weird.
+			users = append(users[:i], users[i+1:]...)
+			return nil
+		}
+	}
+	return fmt.Errorf("User '%v' not found", id)
+}
