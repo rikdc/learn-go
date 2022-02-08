@@ -1,5 +1,7 @@
 package models
 
+import "errors"
+
 type User struct {
 	ID        int
 	FirstName string
@@ -16,9 +18,26 @@ func GetUsers() []*User {
 }
 
 func AddUser(u User) (User, error) {
+
+	if u.ID == 0 {
+		// We have to return a NullObject of User since
+		// this function expects a return value.
+		return User{}, errors.New("New user must include an id")
+	}
+
 	u.ID = nextId
 	nextId++
 	users = append(users, &u)
 
 	return u, nil
+}
+
+func GetUserByID(id int) (User, error) {
+	for _, k := range users {
+		if k.ID == id {
+			// remember to dereference the user object.
+			return *k, nil
+		}
+	}
+	return User{}, errors.New("User not found")
 }
