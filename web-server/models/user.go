@@ -1,6 +1,9 @@
 package models
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type User struct {
 	ID        int
@@ -39,5 +42,5 @@ func GetUserByID(id int) (User, error) {
 			return *k, nil
 		}
 	}
-	return User{}, errors.New("User not found")
+	return User{}, fmt.Errorf("User '%v' not found", id)
 }
