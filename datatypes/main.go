@@ -13,4 +13,5 @@ func main() {
 	}
 	println(p.FullName())
 	println(p.TwitterHandle())
+	println(p.TwitterHandle().RedirectUrl())
 }
