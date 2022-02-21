@@ -8,7 +8,8 @@ import (
 func main() {
 	fmt.Println("My Favourite Movie")
 
-	myFav := model.NewMovie("Top Gun", model.R, 43.2)
+	var myFav model.Catalogable = &model.Movie{}
+	myFav.NewMovie("Top Gun", model.R, 43.2)
 
 	fmt.Printf("My favourite movie is %s\n", myFav.GetTitle())
 	fmt.Printf("It was rated %v\n", myFav.GetRating())

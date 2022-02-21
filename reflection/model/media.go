@@ -2,6 +2,16 @@ package model
 
 import "strings"
 
+type Catalogable interface {
+	NewMovie(title string, rating Rating, boxOffice float32)
+	GetTitle() string
+	GetRating() Rating
+	GetBoxOffice() float32
+	SetTitle(newTitle string)
+	SetRating(newRating Rating)
+	SetBoxOffice(newBoxOffice float32)
+}
+
 type Movie struct {
 	title     string
 	rating    Rating
@@ -18,14 +28,14 @@ const (
 	NC17 = "NC-17 (No children under 17)"
 )
 
-func NewMovie(title string, rating Rating, boxOffice float32) Movie {
-	return Movie{
-		title:     title,
-		rating:    rating,
-		boxOffice: boxOffice,
-	}
+func (m *Movie) NewMovie(title string, rating Rating, boxOffice float32) {
+	m.title = title
+	m.rating = rating
+	m.boxOffice = boxOffice
 }
 
+// If the parameters aren not pointers, then the value is not going
+// to reflect the updates from the Setter.
 func (m *Movie) GetTitle() string {
 	return strings.ToTitle(m.title)
 }
@@ -40,4 +50,12 @@ func (m *Movie) GetBoxOffice() float32 {
 
 func (m *Movie) SetTitle(newTitle string) {
 	m.title = newTitle
+}
+
+func (m *Movie) SetRating(newRating Rating) {
+	m.rating = newRating
+}
+
+func (m *Movie) SetBoxOffice(newBoxOffice float32) {
+	m.boxOffice = newBoxOffice
 }
