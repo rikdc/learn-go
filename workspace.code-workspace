@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "pointers"
+		},
+		{
+			"path": "arrays"
+		},
+		{
+			"path": "web-server"
+		},
+		{
+			"path": "cli-application"
+		},
+		{
+			"path": "hello-world"
+		}
+	],
+	"settings": {}
+}

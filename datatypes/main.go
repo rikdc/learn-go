@@ -12,4 +12,5 @@ func main() {
 		fmt.Printf("An error ocurred: %s", err.Error())
 	}
 	println(p.FullName())
+	println(p.TwitterHandle())
 }

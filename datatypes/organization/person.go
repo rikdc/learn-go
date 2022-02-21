@@ -26,8 +26,11 @@ func NewPerson(firstName, lastName string) Person {
 func (p Person) FullName() string {
 	return fmt.Sprintf("%s %s", p.firstName, p.lastName)
 }
+func (p Person) TwitterHandle() string {
+	return p.twitterHandle
+}
 
-func (p Person) SetTwitterHandle(handle string) error {
+func (p *Person) SetTwitterHandle(handle string) error {
 	if len(handle) == 0 {
 		p.twitterHandle = handle
 	} else if !strings.HasPrefix(handle, "@") {
